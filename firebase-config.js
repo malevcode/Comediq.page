@@ -1,18 +1,20 @@
 // Import the functions you need from the SDKs you need
 import { initializeApp } from "firebase/app";
 import { getFirestore } from "firebase/firestore";
+import { getAnalytics } from "firebase/analytics";
 
 // Your web app's Firebase configuration
-// Replace these with your Firebase config values
 const firebaseConfig = {
-  apiKey: process.env.FIREBASE_API_KEY,
-  authDomain: process.env.FIREBASE_AUTH_DOMAIN,
-  projectId: process.env.FIREBASE_PROJECT_ID,
-  storageBucket: process.env.FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: process.env.FIREBASE_MESSAGING_SENDER_ID,
-  appId: process.env.FIREBASE_APP_ID
+  apiKey: "AIzaSyBIt5uAwX3jL4B55u4fp1iPFjlkx1JJDMM",
+  authDomain: "comediq.firebaseapp.com",
+  projectId: "comediq",
+  storageBucket: "comediq.firebasestorage.app",
+  messagingSenderId: "651174044928",
+  appId: "1:651174044928:web:80561523af676920f5ffe5",
+  measurementId: "G-NL8PHY5GCZ"
 };
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
 export const db = getFirestore(app);
+export const analytics = getAnalytics(app);
