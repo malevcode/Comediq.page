@@ -2,10 +2,12 @@
   "name": "comediq-landing",
   "version": "1.0.0",
   "description": "ComediQ landing page",
+  "type": "module",
   "scripts": {
     "start": "serve -s ."
   },
   "dependencies": {
+    "firebase": "^10.8.0",
     "serve": "^14.2.1"
   }
 }
