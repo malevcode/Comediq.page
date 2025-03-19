@@ -1,0 +1,96 @@
+# ComediQ Landing Page Content
+
+## Hero Section
+Title: ComediQ
+Subtitle: Track your comedy journey
+AI Disclaimer: AI-powered tools to help you grow as a comedian
+CTA Button: Join the Waitlist
+
+## Feature Sections
+
+### 1. Open Mic Finder
+Description: Find verified open mics by day, borough, venue type, and cost.
+
+Features:
+- Smart Mic Route Planning
+  * Map view of nearby mics with automatic route optimization
+  * "Mic Chains" feature showing back-to-back opportunities with travel times
+  * Calendar integration with route planning and notifications
+
+- Enhanced Mic Reviews & Ratings
+  * Audience composition metrics and venue atmosphere ratings
+  * Detailed mic characteristics (sound system, stage setup, etc.)
+  * Host ratings and recent audience size tracking
+
+### 2. Set Analysis & Insights
+Description: AI-powered transcription analyzes timing, filler words, and laugh intensity to help you understand and improve your performance.
+
+Features:
+- Performance Analytics
+  * Real-time laugh detection and intensity measurement
+  * Timing analysis for setup and punchline optimization
+  * Filler word tracking and reduction suggestions
+  * Crowd engagement metrics
+  * Performance trend analysis over time
+
+### 3. Smart Comedy Calendar
+Description: Track shows, set public availability for bookers to find you, and let fans know your next performance.
+
+Features:
+- Advanced Scheduling
+  * Integrated calendar with mic and show management
+  * Public availability display for bookers
+  * Automated show announcements to followers
+  * Travel time padding and route optimization
+  * Show history and statistics tracking
+
+### 4. Comedy-Watched Tracker
+Description: Log shows you've attended, review performances, and get a personalized year-end comedy recap.
+
+Features:
+- Performance Logging
+  * Detailed show logging with notes and ratings
+  * Track bits performed and their success rate
+  * Audience reaction tracking
+  * Personal performance insights
+  * Yearly performance statistics and growth metrics
+
+### 5. Comedy Metrics Dashboard
+Description: Track your comedy journey with detailed metrics: performance frequency, bit success rates, and stage time analytics across weekly, monthly, and yearly views.
+
+Features:
+- Comprehensive Analytics
+  * Performance frequency tracking
+  * Bit success rate analysis
+  * Stage time accumulation metrics
+  * Progress tracking towards goals
+  * Customizable performance dashboards
+
+### 6. Community Growth
+Description: Connect with other comedians, share your journey, and build your audience organically through your performances.
+
+Features:
+- Comedy Circles
+  * Create or join small groups (4-8 comedians) for group mic sessions
+  * Post-mic roundtable scheduling with built-in feedback system
+  * Track group attendance and participation metrics
+
+- Mic Exchange System
+  * Bringer show buddy finder with favor tracking system
+  * "I'll go to yours if you go to mine" matching with built-in reminders
+  * Reputation system for reliable comedy buddies
+
+- Community Building Tools
+  * Post-mic meetup organization and local comedy group directories
+  * Neighborhood-based comedy communities with shared transportation
+  * Group chat for each mic's regular attendees
+
+## Metrics Input Form
+Fields:
+1. Open mics per week
+2. Non-mic spots per week (Includes barking, indie produced, or other booked shows)
+3. Hours spent writing per week
+4. Hours spent watching comedy per week
+
+## Call to Action
+Join the waitlist to get early access and help shape the future of comedy tech.
