@@ -1,0 +1,9 @@
+.success-message {
+  text-align: center;
+  padding: 2rem;
+}
+
+.success-message h3 {
+  color: #4CAF50;
+  margin-bottom: 1rem;
+} 

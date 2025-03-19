@@ -77,7 +77,7 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('Successfully saved to waitlist with ID:', docRef.id);
             
             // Show success message
-            showMessage('🎉 Thanks for joining! We\'ll email you when the beta release is ready. Get ready to revolutionize your comedy journey!');
+            showMessage('🎉 Thanks for joining! We\'ll email you when the beta release is ready.');
             form.reset();
         } catch (error) {
             console.error('Error saving to waitlist:', error);
