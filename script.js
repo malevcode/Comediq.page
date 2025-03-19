@@ -5,26 +5,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const cards = document.querySelectorAll('.feature-card');
     const form = document.querySelector('.signup-form');
     
-    // Create message elements
-    const messageDiv = document.createElement('div');
-    messageDiv.style.cssText = 'padding: 15px; margin: 10px 0; border-radius: 5px; display: none;';
-    form.appendChild(messageDiv);
-
-    function showMessage(message, isError = false) {
-        messageDiv.textContent = message;
-        messageDiv.style.backgroundColor = isError ? '#ffebee' : '#e8f5e9';
-        messageDiv.style.color = isError ? '#c62828' : '#2e7d32';
-        messageDiv.style.display = 'block';
-        
-        // Scroll to message
-        messageDiv.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-        
-        // Hide message after 5 seconds
-        setTimeout(() => {
-            messageDiv.style.display = 'none';
-        }, 5000);
-    }
-    
     // Feature card interaction
     cards.forEach(card => {
         card.addEventListener('click', function() {
@@ -55,6 +35,11 @@ document.addEventListener('DOMContentLoaded', function() {
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
         
+        const submitButton = form.querySelector('button[type="submit"]');
+        const originalButtonText = submitButton.textContent;
+        submitButton.disabled = true;
+        submitButton.textContent = 'Joining...';
+        
         const metrics = {
             openMicsPerWeek: parseInt(form.querySelector('input[type="number"]:nth-of-type(1)').value) || 0,
             nonMicSpotsPerWeek: parseInt(form.querySelector('input[type="number"]:nth-of-type(2)').value) || 0,
@@ -65,23 +50,54 @@ document.addEventListener('DOMContentLoaded', function() {
         const email = form.querySelector('input[type="email"]').value;
         
         try {
-            console.log('Attempting to save to waitlist:', { email, metrics });
-            
             // Save to Firebase
-            const docRef = await addDoc(collection(db, 'waitlist'), {
+            await addDoc(collection(db, 'waitlist'), {
                 email,
                 metrics,
                 timestamp: serverTimestamp()
             });
 
-            console.log('Successfully saved to waitlist with ID:', docRef.id);
-            
             // Show success message
-            showMessage('🎉 Thanks for joining! We\'ll email you when the beta release is ready.');
+            submitButton.textContent = '✓ Joined!';
+            submitButton.style.backgroundColor = '#4CAF50';
             form.reset();
+            
+            // Create and show a success message
+            const successMessage = document.createElement('div');
+            successMessage.style.cssText = `
+                position: fixed;
+                top: 20px;
+                left: 50%;
+                transform: translateX(-50%);
+                background-color: #4CAF50;
+                color: white;
+                padding: 15px 30px;
+                border-radius: 5px;
+                box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+                z-index: 1000;
+            `;
+            successMessage.textContent = 'Thanks for joining! We\'ll be in touch soon.';
+            document.body.appendChild(successMessage);
+
+            // Remove the message after 5 seconds
+            setTimeout(() => {
+                successMessage.style.opacity = '0';
+                successMessage.style.transition = 'opacity 0.5s ease';
+                setTimeout(() => successMessage.remove(), 500);
+                submitButton.textContent = originalButtonText;
+                submitButton.style.backgroundColor = '';
+                submitButton.disabled = false;
+            }, 5000);
+
         } catch (error) {
             console.error('Error saving to waitlist:', error);
-            showMessage('There was an error joining the waitlist. Please try again.', true);
+            submitButton.textContent = 'Error - Try Again';
+            submitButton.style.backgroundColor = '#f44336';
+            setTimeout(() => {
+                submitButton.textContent = originalButtonText;
+                submitButton.style.backgroundColor = '';
+                submitButton.disabled = false;
+            }, 3000);
         }
     });
 });
