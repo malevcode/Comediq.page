@@ -101,28 +101,16 @@ Join the waitlist to get early access and help shape the future of comedy tech.
 - HTML5, CSS3, and vanilla JavaScript
 - Responsive design with mobile-first approach
 - Interactive feature cards with keyboard accessibility
-- Form validation and user feedback system
-- Modern UI with smooth animations and transitions
+- Custom animations and transitions
+- Form validation and user feedback
 
 ### Backend
-- Firebase Integration
-  * Firestore database for waitlist storage
-  * Real-time data updates
-  * Secure data storage and retrieval
-  * Analytics integration for user tracking
+- Firebase Backend-as-a-Service
+  * Firestore Database for waitlist entries
+  * Firebase Hosting for static site deployment
+  * GitHub Actions for CI/CD pipeline
 
-### Admin Dashboard (/admin.html)
-- Statistics Overview
-  * Total submissions counter
-  * Average open mics per week
-  * Average writing hours per week
-- Data Management
-  * CSV export functionality
-  * Sortable data table
-  * Timestamp-based organization
-  * Full metrics display
-
-### Data Structure
+### Database Schema
 Firestore Collections:
 - waitlist
   * email: string
@@ -131,26 +119,22 @@ Firestore Collections:
     - nonMicSpotsPerWeek: number
     - writingHoursPerWeek: number
     - watchingHoursPerWeek: number
-  * timestamp: timestamp
+  * timestamp: serverTimestamp
 
 ### Deployment
-- Hosting: Firebase Hosting
-- Domain: comediq.web.app
-- CI/CD: GitHub Actions integration
-- Automatic deployments on merge to master
+- Site URL: https://comediq.web.app
+- Automatic deployments via GitHub Actions
+- Repository: https://github.com/malevcode/Comediq.page
 
-### Repository Structure
-- index.html: Main landing page
-- admin.html: Admin dashboard
-- styles.css: Main stylesheet
-- script.js: Frontend JavaScript
-- admin.js: Admin dashboard logic
-- firebase-config.js: Firebase configuration
-- documentation.txt: Project documentation
-- .github/workflows: GitHub Actions configuration
+### Form Submission Flow
+1. User fills out metrics and email
+2. Client-side validation
+3. Data saved to Firestore waitlist collection
+4. Success feedback shown to user
+5. Form resets for next submission
 
-### Security
-- Firebase security rules
-- Protected admin interface
-- Secure form submissions
-- Data validation and sanitization
+### Admin Access
+View submissions in Firebase Console:
+1. Go to https://console.firebase.google.com/project/comediq/firestore
+2. Navigate to 'waitlist' collection
+3. Entries sorted by timestamp (newest first)

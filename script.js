@@ -1,4 +1,5 @@
-import { collection, addDoc, serverTimestamp } from 'https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore.js';
+import { db } from './firebase-config.js';
+import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
 
 document.addEventListener('DOMContentLoaded', function() {
     const cards = document.querySelectorAll('.feature-card');
@@ -50,7 +51,7 @@ document.addEventListener('DOMContentLoaded', function() {
         
         try {
             // Save to Firebase
-            await addDoc(collection(window.db, 'waitlist'), {
+            await addDoc(collection(db, 'waitlist'), {
                 email,
                 metrics,
                 timestamp: serverTimestamp()

@@ -1,13 +1,18 @@
 {
-  "name": "comediq-landing",
+  "name": "comediq.page",
   "version": "1.0.0",
   "description": "ComediQ landing page",
   "type": "module",
   "scripts": {
-    "start": "serve -s ."
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
   },
   "dependencies": {
     "firebase": "^10.8.0",
-    "serve": "^14.2.1"
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "react-scripts": "^5.0.1"
   }
 }
