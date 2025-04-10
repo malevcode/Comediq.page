@@ -117,8 +117,9 @@ Firestore Collections:
   * metrics: object
     - openMicsPerWeek: number
     - nonMicSpotsPerWeek: number
-    - writingHoursPerWeek: number
-    - watchingHoursPerWeek: number
+    - weeklyMicSpend: number
+  * experience: string
+  * affiliate: string (yes/no)
   * timestamp: serverTimestamp
 
 ### Deployment

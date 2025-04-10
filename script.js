@@ -1,10 +1,9 @@
-import { db } from './firebase-config.js';
-import { collection, addDoc, serverTimestamp } from 'firebase/firestore';
+import { submitToGoogleSheets } from './sheets-api.js';
 
 document.addEventListener('DOMContentLoaded', function() {
     const cards = document.querySelectorAll('.feature-card');
     const form = document.querySelector('.signup-form');
-    
+
     // Feature card interaction
     cards.forEach(card => {
         card.addEventListener('click', function() {
@@ -34,34 +33,36 @@ document.addEventListener('DOMContentLoaded', function() {
     // Form submission handler
     form.addEventListener('submit', async function(e) {
         e.preventDefault();
-        
+
         const submitButton = form.querySelector('button[type="submit"]');
         const originalButtonText = submitButton.textContent;
         submitButton.disabled = true;
         submitButton.textContent = 'Joining...';
-        
+
         const metrics = {
-            openMicsPerWeek: parseInt(form.querySelector('input[type="number"]:nth-of-type(1)').value) || 0,
-            nonMicSpotsPerWeek: parseInt(form.querySelector('input[type="number"]:nth-of-type(2)').value) || 0,
-            writingHoursPerWeek: parseInt(form.querySelector('input[type="number"]:nth-of-type(3)').value) || 0,
-            watchingHoursPerWeek: parseInt(form.querySelector('input[type="number"]:nth-of-type(4)').value) || 0
+            openMicsPerWeek: parseInt(form.querySelector('input[name="openMicsPerWeek"]').value) || 0,
+            weeklyMicSpend: parseInt(form.querySelector('input[name="weeklyMicSpend"]').value) || 0,
+            nonMicSpotsPerWeek: parseInt(form.querySelector('input[name="nonMicSpotsPerWeek"]').value) || 0
         };
 
-        const email = form.querySelector('input[type="email"]').value;
-        
+        const email = form.querySelector('input[name="email"]').value;
+        const experience = form.querySelector('select[name="experience"]').value;
+        const affiliate = form.querySelector('input[name="affiliate"]:checked').value;
+
         try {
-            // Save to Firebase
-            await addDoc(collection(db, 'waitlist'), {
+            // Save to Google Sheets
+            await submitToGoogleSheets({
                 email,
                 metrics,
-                timestamp: serverTimestamp()
+                experience,
+                affiliate
             });
 
             // Show success message
             submitButton.textContent = '✓ Joined!';
             submitButton.style.backgroundColor = '#4CAF50';
             form.reset();
-            
+
             // Create and show a success message
             const successMessage = document.createElement('div');
             successMessage.style.cssText = `
@@ -90,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 5000);
 
         } catch (error) {
-            console.error('Error saving to waitlist:', error);
+            console.error('Error saving to Google Sheets:', error);
             submitButton.textContent = 'Error - Try Again';
             submitButton.style.backgroundColor = '#f44336';
             setTimeout(() => {
