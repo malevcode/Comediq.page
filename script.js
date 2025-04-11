@@ -1,4 +1,4 @@
-import { submitToGoogleSheets } from './sheets-api.js';
+import { submitToMongoDB } from './mongodb-api.js';
 
 document.addEventListener('DOMContentLoaded', function() {
     const cards = document.querySelectorAll('.feature-card');
@@ -50,8 +50,8 @@ document.addEventListener('DOMContentLoaded', function() {
         const affiliate = form.querySelector('input[name="affiliate"]:checked').value;
 
         try {
-            // Save to Google Sheets
-            await submitToGoogleSheets({
+            // Save to MongoDB
+            await submitToMongoDB({
                 email,
                 metrics,
                 experience,
@@ -91,7 +91,7 @@ document.addEventListener('DOMContentLoaded', function() {
             }, 5000);
 
         } catch (error) {
-            console.error('Error saving to Google Sheets:', error);
+            console.error('Error saving to MongoDB:', error);
             submitButton.textContent = 'Error - Try Again';
             submitButton.style.backgroundColor = '#f44336';
             setTimeout(() => {
